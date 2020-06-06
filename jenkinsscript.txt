@@ -1,0 +1,20 @@
+pipeline {
+   agent any
+       stage('Build'){
+
+        steps{
+
+         
+               sh '''
+
+                docker build -t docker.io/manojsinghmanoj/helloworld:latest .
+
+                '''
+
+          
+
+        }
+
+    }
+   
+}
