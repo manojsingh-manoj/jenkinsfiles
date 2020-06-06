@@ -17,4 +17,30 @@ pipeline {
 
     }
    
+
+    stage('Publish'){
+
+        steps{
+
+            withCredentials([string(credentialsId: 'dockerhub', variable: 'DOCKER_PASSWD'])
+
+            {
+
+            sh '''
+
+            echo $DOCKER_PASSWD | docker login --username 'manojsinghmanoj' --password-stdin ${DOCKER_PASSWD} 
+
+            docker push docker.io/manojsinghmanoj/myhelloimage:v23
+
+            docker logout
+
+            '''
+
+            }
+
+        }
+
+    }
+
+
 }
