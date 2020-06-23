@@ -13,6 +13,7 @@ spec:
       labels:
         app: jenkins
     spec:
+      serviceAccountName: build-robot
       containers:
       - name: jenkins
         image: jenkins/jenkins:lts
