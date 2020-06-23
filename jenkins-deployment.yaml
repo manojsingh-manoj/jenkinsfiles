@@ -32,7 +32,19 @@ spec:
         volumeMounts:
           - name: jenkins-home
             mountPath: /var/jenkins_home
+          - name: dockersock
+            mountPath: /var/run/docker.sock
+          - name: dockerexec
+            mountPath: /usr/bin/docker
       volumes:
         - name: jenkins-home
           emptyDir: {}
+        - name: dockersock
+          hostPath:
+            path: /var/run/docker.sock
+            type: File
+        - name: dockerexec
+          hostPath:
+            path: /usr/bin/docker
+            type: File
 
